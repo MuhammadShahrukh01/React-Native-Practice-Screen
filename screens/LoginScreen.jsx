@@ -52,6 +52,7 @@ const LoginScreen = props => {
               <View style={styles.input_align}>
                 <InputField
                   label="Email address"
+                  name="email"
                   mode="outlined"
                   outlineColor="grey"
                   activeOutlineColor="black"
@@ -68,6 +69,7 @@ const LoginScreen = props => {
               <View style={styles.input_align}>
                 <InputField
                   label="Password"
+                  name="password"
                   mode="outlined"
                   outlineColor="grey"
                   activeOutlineColor="black"
@@ -84,11 +86,10 @@ const LoginScreen = props => {
                           style={styles.icon}
                         />
                       )}
-                      onPress={passwordHideAndShowHandler}
                     />
                   }
-                  secureTextEntry={password}
                   value="password123"
+                  secureTextEntry={password}
                 />
               </View>
             </View>

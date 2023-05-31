@@ -14,11 +14,12 @@ import Button from '../components/CustomButton';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome5';
 import HeadingAndDescrip from '../components/HeadingAndDescrip';
-import OtpIcon from '../assets/images/OTP.png';
+import ModalBox from '../components/ModalBox';
 
 const ResetPasswordScreen = () => {
   const [password, setPassword] = useState(true);
   const [passwordIcon, setPasswordIcon] = useState('eye-slash');
+  const [modalVisible, setModalVisible] = useState(false);
 
   const passwordHideAndShowHandler = () => {
     password ? setPassword(false) : setPassword(true);
@@ -26,9 +27,28 @@ const ResetPasswordScreen = () => {
       ? setPasswordIcon('eye')
       : setPasswordIcon('eye-slash');
   };
+
+  const hideModalHandler = () => {
+    setModalVisible(false);
+  };
+
+  const showModalHandler = () => {
+    setModalVisible(true);
+  };
   return (
     <>
       <ScrollView style={styles.body}>
+        {/* modal */}
+        <ModalBox
+          visible={modalVisible}
+          onRequestClose={hideModalHandler}
+          animationType="fade"
+          topImage={require('../assets/images/Rectangle.png')}
+          iconImage={require('../assets/images/successIcon.png')}
+          heading="Successfull"
+          text="Your password has been changed successfully."
+        />
+        {/* modal end */}
         <TopScreenImage
           imageSource={require('../assets/images/Resetpassword-amico13x.png')}
           arrowBtnSource={require('../assets/images/ArrowLeft.png')}
@@ -114,7 +134,11 @@ const ResetPasswordScreen = () => {
                 </View>
               </View>
             </View>
-            <Button btnColor="#FFC100" btnText="Reset Password" />
+            <Button
+              btnColor="#FFC100"
+              btnText="Reset Password"
+              onPress={showModalHandler}
+            />
           </View>
         </View>
       </ScrollView>

@@ -13,6 +13,7 @@ const InputField = props => {
     right,
     secureTextEntry,
     keyboardType,
+    onChangeText,
   } = props;
   return (
     <TextInput
@@ -26,6 +27,7 @@ const InputField = props => {
       value={value}
       secureTextEntry={secureTextEntry}
       keyboardType={keyboardType}
+      onChangeText={onChangeText}
     />
   );
 };
